@@ -1,0 +1,44 @@
+version: "3"
+
+services:
+  node:
+    image: node:16.14
+    container_name: world_cup
+    tty: true
+    stdin_open: true
+    command: bash
+    restart: always
+    working_dir: /home/node/app
+    volumes:
+      - ./:/home/node/app
+    depends_on:
+      - db
+    ports:
+      - 3000:3000
+      - 3009:3009
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: password
+      MYSQL_HOST: db 
+      PORT: '3000'
+      HOST: world_cup
+    networks:
+      - world_cup_net
+
+  db:
+    # Caso esteja utilizando MacOS M1, descomentar a linha abaixo
+    # platform: linux/x86_64
+    # Se a linha de cima não resolver, esta abaixo é outra opção
+    # platform: linux/arm64/v8
+    container_name: world_cup_db
+    image: mysql:8.0.23
+    environment:
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - 3306:3306
+    networks:
+      - world_cup_net
+
+networks:
+  world_cup_net:
+    driver: bridge
