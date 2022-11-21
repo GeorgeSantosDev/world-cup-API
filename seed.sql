@@ -1,4 +1,4 @@
-USE `WorldCup`;
+USE WorldCup;
 
 SET FOREIGN_KEY_CHECKS = 0;
 
@@ -37,7 +37,7 @@ INSERT INTO WorldCup.country (name, group_id) VALUES
     ('França', 4),
     ('Dinamarca', 4),
     ('Tunísia', 4),
-    ('Austrália', 4)
+    ('Austrália', 4),
     ('Alemanha', 5),
     ('Costa Rica', 5),
     ('Espanha', 5),
