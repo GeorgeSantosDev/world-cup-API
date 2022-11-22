@@ -3,7 +3,7 @@ const { expect } = require('chai');
 const { playersModel } = require('../../../src/models');
 
 const connection = require('../../../src/models/connection');
-const playersMocks = require('./Mocks/players.mock');
+const playersMocks = require('../../Mocks/players.mocks');
 
 describe('Test model layer of players path', function() {
   afterEach(sinon.restore);
