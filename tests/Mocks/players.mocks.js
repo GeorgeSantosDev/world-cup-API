@@ -13,6 +13,16 @@ const allPlayers = [
   },
 ];
 
+const messageInternalError = { type: 'INTERNAL_ERROR', message: 'Internal error' };
+const messageSuccessFindAllPlayers = { type: null, message: allPlayers };
+
+const messagePlayerNotFound = { type: 'PLAYER_NOT_FOUND', message: 'Player not found' };
+const messageSuccessFindPlayer = { type: null, message: allPlayers[0] };
+
 module.exports = {
   allPlayers,
+  messageInternalError,
+  messageSuccessFindAllPlayers,
+  messagePlayerNotFound,
+  messageSuccessFindPlayer,
 };

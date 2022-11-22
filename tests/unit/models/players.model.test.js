@@ -16,19 +16,19 @@ describe('Test model layer of players path', function() {
 
   it('should return a players by id', async function() {
     sinon.stub(connection, 'execute').resolves([[playersMocks.allPlayers[0]]]);
-    const response = await playersModel.findById();
+    const response = await playersModel.findById(1);
     expect(response).to.be.deep.equal(playersMocks.allPlayers[0]);
   });
 
   it('should return a players by name', async function() {
     sinon.stub(connection, 'execute').resolves([[playersMocks.allPlayers[0]]]);
-    const response = await playersModel.findByName();
+    const response = await playersModel.findByName('Cristiano Ronaldo');
     expect(response).to.be.deep.equal(playersMocks.allPlayers[0]);
   });
 
   it('should return all players from the same country by country id', async function() {
     sinon.stub(connection, 'execute').resolves([playersMocks.allPlayers]);
-    const response = await playersModel.findByCountryId();
+    const response = await playersModel.findByCountryId(1);
     expect(response).to.be.deep.equal(playersMocks.allPlayers);
   });
 });
