@@ -5,7 +5,6 @@ const { playersModel } = require('../../../src/models');
 const connection = require('../../../src/models/connection');
 const playersMocks = require('./Mocks/players.mock');
 
-
 describe('Test model layer of players path', function() {
   afterEach(sinon.restore);
 
@@ -25,5 +24,11 @@ describe('Test model layer of players path', function() {
     sinon.stub(connection, 'execute').resolves([[playersMocks.allPlayers[0]]]);
     const response = await playersModel.findByName();
     expect(response).to.be.deep.equal(playersMocks.allPlayers[0]);
+  });
+
+  it('should return all players from the same country by country id', async function() {
+    sinon.stub(connection, 'execute').resolves([playersMocks.allPlayers]);
+    const response = await playersModel.findByCountryId();
+    expect(response).to.be.deep.equal(playersMocks.allPlayers);
   });
 });
