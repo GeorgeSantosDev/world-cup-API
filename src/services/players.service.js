@@ -16,14 +16,6 @@ const findPlayerById = async (id) => {
   return { type: 'PLAYER_NOT_FOUND', message: 'Player not found' };
 };
 
-const findPlayerByName = async (name) => {
-  const player = await playersModel.findByName(name);
-
-  if (player) return { type: null, message: player };
-
-  return { type: 'PLAYER_NOT_FOUND', message: 'Player not found' };
-};
-
 const findPlayerByCountryId = async (countryId) => {
   const player = await playersModel.findByCountryId(countryId);
 
@@ -35,6 +27,5 @@ const findPlayerByCountryId = async (countryId) => {
 module.exports = {
   findAllPlayers,
   findPlayerById,
-  findPlayerByName,
   findPlayerByCountryId,
 };

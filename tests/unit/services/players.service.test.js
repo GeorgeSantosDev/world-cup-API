@@ -33,18 +33,6 @@ describe('Test service layer of players path', function() {
     expect(response).to.be.deep.equal(playersMocks.messageSuccessFindPlayer);
   });
 
-  it('should return an object with type PLAYER_NOT_FOUND and message "Player not found!" for findPlayerByName function', async function() {
-    sinon.stub(playersModel, 'findByName').resolves(undefined);
-    const response = await playersService.findPlayerByName('Lionel Messi');
-    expect(response).to.be.deep.equal(playersMocks.messagePlayerNotFound);
-  });
-
-  it('should return an object with type null and message { player info } for findPlayerByName function', async function() {
-    sinon.stub(playersModel, 'findByName').resolves(playersMocks.allPlayers[0]);
-    const response = await playersService.findPlayerByName(1);
-    expect(response).to.be.deep.equal(playersMocks.messageSuccessFindPlayer);
-  });
-
   it('should return an object with type PLAYER_NOT_FOUND and message "Player not found!" for findPlayerByCountryId function', async function() {
     sinon.stub(playersModel, 'findByCountryId').resolves(undefined);
     const response = await playersService.findPlayerByCountryId(1);
